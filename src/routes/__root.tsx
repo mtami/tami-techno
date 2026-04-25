@@ -45,6 +45,12 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Mohammad Tami — Software Developer" },
+      { name: "description", content: "A modern, responsive one-page portfolio showcasing Mohammad Tami's software development expertise." },
+      { property: "og:description", content: "A modern, responsive one-page portfolio showcasing Mohammad Tami's software development expertise." },
+      { name: "twitter:description", content: "A modern, responsive one-page portfolio showcasing Mohammad Tami's software development expertise." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/78dfde24-3394-4404-8342-0e3787d60229/id-preview-cc27f428--8fec3060-cd8f-4e0e-8bd5-6cdfcfb1f0cc.lovable.app-1777148670085.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/78dfde24-3394-4404-8342-0e3787d60229/id-preview-cc27f428--8fec3060-cd8f-4e0e-8bd5-6cdfcfb1f0cc.lovable.app-1777148670085.png" },
     ],
     links: [
       {
