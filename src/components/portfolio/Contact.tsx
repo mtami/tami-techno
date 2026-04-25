@@ -1,33 +1,37 @@
 import { Mail, Linkedin, ArrowUpRight } from "lucide-react";
-
-const items = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "tami@example.com",
-    href: "mailto:tami@example.com",
-  },
-  {
-    icon: Linkedin,
-    label: "LinkedIn",
-    value: "linkedin.com/in/mtami",
-    href: "https://www.linkedin.com/in/mtami/",
-  },
-];
+import { useLanguage } from "@/lib/i18n";
 
 export function Contact() {
+  const { t } = useLanguage();
+  const c = t.contact;
+
+  const items = [
+    {
+      icon: Mail,
+      label: c.email,
+      value: "tami@example.com",
+      href: "mailto:tami@example.com",
+    },
+    {
+      icon: Linkedin,
+      label: c.linkedin,
+      value: "linkedin.com/in/mtami",
+      href: "https://www.linkedin.com/in/mtami/",
+    },
+  ];
+
   return (
     <section id="contact" className="py-24 md:py-32 bg-secondary/40 border-t border-border">
       <div className="max-w-3xl mx-auto px-6 text-center">
         <div className="reveal">
           <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-4">
-            Contact
+            {c.label}
           </p>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-5">
-            Let's build something together.
+            {c.heading}
           </h2>
           <p className="text-lg text-muted-foreground mb-12 max-w-xl mx-auto">
-            Got a project in mind or just want to say hi? My inbox is open.
+            {c.subheading}
           </p>
         </div>
         <div className="reveal grid sm:grid-cols-2 gap-4">

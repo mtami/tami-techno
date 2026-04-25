@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
-
-const links = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
-];
+import { Menu, X, Globe } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
 export function Navbar() {
+  const { t, lang, toggle } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const links = [
+    { href: "#about", label: t.nav.about },
+    { href: "#skills", label: t.nav.skills },
+    { href: "#projects", label: t.nav.projects },
+    { href: "#contact", label: t.nav.contact },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -43,19 +45,39 @@ export function Navbar() {
             </li>
           ))}
         </ul>
-        <a
-          href="#contact"
-          className="hidden md:inline-flex items-center rounded-full px-4 py-2 text-sm font-medium bg-foreground text-background hover:opacity-90 transition-opacity"
-        >
-          Let's talk
-        </a>
-        <button
-          className="md:hidden p-2 -mr-2 text-foreground"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="hidden md:flex items-center gap-3">
+          <button
+            onClick={toggle}
+            aria-label="Toggle language"
+            className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium border border-border bg-background hover:bg-accent transition-colors"
+          >
+            <Globe size={14} />
+            {lang === "en" ? "AR" : "EN"}
+          </button>
+          <a
+            href="#contact"
+            className="inline-flex items-center rounded-full px-4 py-2 text-sm font-medium bg-foreground text-background hover:opacity-90 transition-opacity"
+          >
+            {t.nav.letsTalk}
+          </a>
+        </div>
+        <div className="md:hidden flex items-center gap-2">
+          <button
+            onClick={toggle}
+            aria-label="Toggle language"
+            className="inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-xs font-medium border border-border bg-background"
+          >
+            <Globe size={12} />
+            {lang === "en" ? "AR" : "EN"}
+          </button>
+          <button
+            className="p-2 -mr-2 text-foreground"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </nav>
       {open && (
         <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-lg">

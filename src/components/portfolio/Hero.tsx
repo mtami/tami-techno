@@ -1,6 +1,10 @@
 import { ArrowRight, Mail } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
 export function Hero() {
+  const { t, lang } = useLanguage();
+  const h = t.hero;
+
   return (
     <section
       id="hero"
@@ -18,26 +22,25 @@ export function Hero() {
           style={{ animation: "var(--animate-fade-in)" }}
         >
           <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-          Available for new opportunities
+          {h.badge}
         </div>
         <h1
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]"
           style={{ animation: "var(--animate-fade-in-up)" }}
         >
-          Mohammad Tami
+          {h.title}
         </h1>
         <p
           className="mt-4 text-xl sm:text-2xl md:text-3xl font-medium text-gradient"
           style={{ animation: "var(--animate-fade-in-up)", animationDelay: "0.1s" }}
         >
-          Software Developer · Web Development
+          {h.subtitle}
         </p>
         <p
           className="mt-6 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground leading-relaxed"
           style={{ animation: "var(--animate-fade-in-up)", animationDelay: "0.2s" }}
         >
-          Specialized in scalable systems, multi-tenant architectures, and
-          AI-powered applications.
+          {h.description}
         </p>
         <div
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3"
@@ -48,10 +51,10 @@ export function Hero() {
             className="group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-glow)] transition-all w-full sm:w-auto"
             style={{ background: "var(--gradient-hero)" }}
           >
-            View Projects
+            {h.viewProjects}
             <ArrowRight
               size={16}
-              className="transition-transform group-hover:translate-x-0.5"
+              className={`transition-transform group-hover:translate-x-0.5 ${lang === "ar" ? "rotate-180" : ""}`}
             />
           </a>
           <a
@@ -59,7 +62,7 @@ export function Hero() {
             className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold border border-border bg-background hover:bg-accent transition-colors w-full sm:w-auto"
           >
             <Mail size={16} />
-            Contact
+            {h.contact}
           </a>
         </div>
       </div>
